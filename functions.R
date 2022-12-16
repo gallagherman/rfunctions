@@ -11,7 +11,7 @@ titr <- function(top,fold,n){
 
 # Clean FlowJo raw output CSV or xlsx file
 
-read_mfis <- function(file, sheet = 1, skip = 0, n_max = Inf) {
+read_mfi <- function(file, sheet = 1, skip = 0, n_max = Inf) {
   if (file.exists(file)==FALSE){
     stop('File does not exist.')
   }
