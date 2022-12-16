@@ -37,8 +37,8 @@ read_mfi <- function(file, sheet = 1, skip = 0, n_max = Inf) {
 
 # ggplot theming
 theme_mpg <- function(){
- theme_bw() +
-  theme(strip.background = element_blank(),
+ ggplot2::theme_bw() +
+  ggplot2::theme(strip.background = element_blank(),
         strip.text = element_text(face = 'bold'),
         panel.grid = element_line(color = 'grey95')) 
 }
