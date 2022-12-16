@@ -1,6 +1,6 @@
 ##### Collection of custom functions
 
-# Create serial-dilution titration curve
+# Calculate a serial-dilution titration curve
 titr <- function(top,fold,n){
   out <- c(top)
   for(i in 2:n){
@@ -10,7 +10,6 @@ titr <- function(top,fold,n){
 }
 
 # Clean FlowJo raw output CSV or xlsx file
-
 read_mfi <- function(file, sheet = 1, skip = 0, n_max = Inf) {
   if (file.exists(file)==FALSE){
     stop('File does not exist.')
@@ -34,4 +33,12 @@ read_mfi <- function(file, sheet = 1, skip = 0, n_max = Inf) {
   
   return(x)
   
+}
+
+# ggplot theming
+theme_mpg <- function(){
+ theme_bw() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = 'bold'),
+        panel.grid = element_line(color = 'grey95')) 
 }
