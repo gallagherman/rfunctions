@@ -8,3 +8,30 @@ titr <- function(top,fold,n){
   }
   return(out)
 }
+
+# Clean FlowJo raw output CSV or xlsx file
+
+read_mfis <- function(file, sheet = 1, skip = 0, n_max = Inf) {
+  if (file.exists(file)==FALSE){
+    stop('File does not exist.')
+  }
+  
+  if(tools::file_ext(file) == 'xlsx') {
+    x <- readxl::read_excel(file, sheet = sheet, skip = skip, n_max = n_max)
+  } else if (tools::file_ext(file) == 'csv') {
+    x <- read.csv2(file)
+  } else {
+    stop('File is not csv or Excel xlsx.')
+  }
+  
+  x <- tibble::as_tibble(x)
+  
+  colnames(x)[1] <- gsub(':','', colnames(x)[1])
+  
+  if (x[nrow(x), 1] == 'SD' & x[nrow(x)-1, 1] == 'Mean') {
+    x <- x[1:(nrow(x)-2),]
+  }
+  
+  return(x)
+  
+}
