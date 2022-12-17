@@ -42,3 +42,4 @@ theme_mpg <- function(){
         strip.text = element_text(face = 'bold'),
         panel.grid = element_line(color = 'grey95')) 
 }
+print("hiya!:w")
